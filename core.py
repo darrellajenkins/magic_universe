@@ -15,12 +15,12 @@ class CastleKilmereMember:
 
     def write_letter(self, recipient, content):
         letter_name = f"dear_{recipient}.txt"
-        with Letter(letter_name) as l:
-            l.write(content)
+        with Letter(letter_name) as f:
+            f.write(content)
 
-    def whisper(function):
+    def whisper(self, function):
         @functools.wraps(function)
-        def wrapper(self, *args):
+        def wrapper(*args):
             """ Whispering decorator """
             original_output = function(self, *args)
             first_part, words = original_output.split(' says: ')
@@ -200,10 +200,9 @@ class Pupil(CastleKilmereMember):
               "You should only do that if she/he dropped out of school without passing any exam!")
         del self._elms
 
-
     @staticmethod
     def passed(grade):
-        """ Given a grade, determine if an exam was passed.  """
+        """ Given a grade, determine if a student has passed an exam.  """
         grades = {
                 'E': True,
                 'Excellent': True,
@@ -230,7 +229,7 @@ class Pupil(CastleKilmereMember):
                 f"start_year={self.start_year})")
 
     def learn_spell(self, spell: 'Spell'):
-        """ Allows a pupil to learn a spell, given that he/she is old enough """
+        """ Allows a pupil to learn a spell, given that he/she is old enough. """
         if spell.min_year is not None:
             if self.current_year >= spell.min_year:
                 print(f"{self.name} now knows '{spell.name}'")
@@ -292,7 +291,7 @@ class Spell(ABC):
 
 
 class Charm(Spell):
-    """Creates a charm - a spell that alters the inherent qualities of an object"""
+    """Creates a charm - a spell that alters the inherent qualities of an object."""
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -314,7 +313,7 @@ class Charm(Spell):
 
 
 class Transfiguration(Spell):
-    """Creates a transfiguration - a spell that alters the form or appearance of an object"""
+    """Creates a transfiguration - a spell that alters the form or appearance of an object."""
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -329,8 +328,9 @@ class Transfiguration(Spell):
     def cast(self) -> str:
         return f"{self.incantation}!"
 
+
 class Jinx(Spell):
-    """Creates a jinx - a spell whose effects are irritating but amusing"""
+    """Creates a jinx - a spell whose effects are irritating but amusing."""
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -346,6 +346,7 @@ class Jinx(Spell):
 
     def cast(self) -> str:
         return f"{self.incantation}!"
+
 
 class Hex(Spell):
     """Creates a hex - a spell that affects an object in a negative manner"""
@@ -365,8 +366,9 @@ class Hex(Spell):
     def cast(self) -> str:
         return f"{self.incantation}!"
 
+
 class Curse(Spell):
-    """Creates a curse - a spell that affects an object in a stflynngly negative manner"""
+    """Creates a curse - a spell that affects an object by stifling."""
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Difficult", min_year: int = 6):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -383,8 +385,9 @@ class Curse(Spell):
     def cast(self) -> str:
         return f"{self.incantation}!"
 
+
 class CounterSpell(Spell):
-    """Creates a counter-spell - a spell that inhibits the effect of another spell"""
+    """Creates a counter-spell - a spell that inhibits the effect of another spell."""
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -400,8 +403,9 @@ class CounterSpell(Spell):
     def cast(self) -> str:
         return f"{self.incantation}!"
 
+
 class HealingSpell(Spell):
-    """Creates a healing-spell - a spell that improves the condition of a living object"""
+    """Creates a healing-spell - a spell that improves the condition of a living object."""
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -460,6 +464,7 @@ class Letter:
         if self.letter:
             self.letter.close()
 
+
 class Potion:
     """ Creates a potion """
     def __init__(self, ingredients):
@@ -496,4 +501,3 @@ if __name__ == "__main__":
 
     # briddle = Professor.briddle()
     # print(briddle == eval(repr(briddle)))
-

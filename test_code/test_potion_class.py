@@ -1,5 +1,5 @@
 import pytest
-from magical_universe import Potion
+from core import Potion
 
 @pytest.fixture
 def flask_of_remembrance():

@@ -1,5 +1,5 @@
 import pytest
-from magical_universe import Ghost
+from core import Ghost
 import datetime
 
 now = datetime.datetime.now().year

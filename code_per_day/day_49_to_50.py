@@ -2,7 +2,7 @@ import sys
 sys.path.append('../')
 
 import yaml
-from magical_universe import CastleKilmereMember, Pupil
+from core import CastleKilmereMember, Pupil
 
 if __name__ == "__main__":
 

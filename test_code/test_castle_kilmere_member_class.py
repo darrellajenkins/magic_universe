@@ -1,5 +1,5 @@
 import pytest
-from magical_universe import CastleKilmereMember
+from core import CastleKilmereMember
 import datetime
 
 now = datetime.datetime.now().year

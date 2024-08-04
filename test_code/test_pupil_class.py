@@ -1,6 +1,6 @@
 import pytest
 import datetime
-from magical_universe import Pupil, Charm, Transfiguration, Hex, Curse, Jinx, HealingSpell, CounterSpell
+from core import Pupil, Charm, Transfiguration, Hex, Curse, Jinx, HealingSpell, CounterSpell
 
 now = datetime.datetime.now().year
 
