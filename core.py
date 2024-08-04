@@ -13,10 +13,10 @@ class CastleKilmereMember:
         self.sex = sex
         self._traits = defaultdict(lambda: False)
 
-    def write_letter(self, recipient, content):
-        letter_name = f"dear_{recipient}.txt"
-        with Letter(letter_name) as f:
-            f.write(content)
+    # def write_letter(self, recipient, content):
+    #     letter_name = f"dear_{recipient}.txt"
+    #     with Letter(letter_name) as f:
+    #         f.write(content)
 
     def whisper(self, function):
         @functools.wraps(function)
