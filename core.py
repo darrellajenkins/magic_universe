@@ -17,7 +17,11 @@ class CastleKilmereMember:
     #     letter_name = f"dear_{recipient}.txt"
     #     with Letter(letter_name) as f:
     #         f.write(content)
-
+    def letter(self, content, sender, receiver):
+        name = self.name
+        sender = sender.upper()
+        receiver = receiver.upper()
+        
     def whisper(self, function):
         @functools.wraps(function)
         def wrapper(*args):
