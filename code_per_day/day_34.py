@@ -1,5 +1,5 @@
 from collections import Counter
-from magical_universe import Potion
+from core import Potion
 
 # Step 1: Create the potions
 flask_of_remembrance = Potion(['raven eggshells', 'tincture of thyme', 'unicorn tears',
