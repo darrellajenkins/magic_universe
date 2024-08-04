@@ -8,6 +8,7 @@ from dataclasses import dataclass
 class CastleKilmereMember:
     """Creates a member of the Castle Kilmere School of Magic"""
     def __init__(self, name: str, birthyear: int, sex: str):
+        self.wolf = None
         self.name = name
         self.birthyear = birthyear
         self.sex = sex
@@ -22,7 +23,8 @@ class CastleKilmereMember:
         sender = sender.upper()
         receiver = receiver.upper()
 
-    def wolf(self):
+    def wolf(self, breed):
+        self.wolf = breed.upper()
         print("Of wolf and man!")
 
     def whisper(self, function):
