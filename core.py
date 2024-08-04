@@ -16,6 +16,7 @@ class CastleKilmereMember:
         self._traits = defaultdict(lambda: False)
 
     def write_letter(self, recipient, content):
+        self._traits[recipient] = True
         letter_name = f"dear_{recipient}.txt"
         with Letter(letter_name) as f:
             f.write(content)
