@@ -21,7 +21,10 @@ class CastleKilmereMember:
         name = self.name
         sender = sender.upper()
         receiver = receiver.upper()
-        
+
+    def wolf(self):
+        print("Of wolf and man!")
+
     def whisper(self, function):
         @functools.wraps(function)
         def wrapper(*args):
