@@ -21,7 +21,7 @@ class CastleKilmereMember:
         name = self.name
         sender = sender.upper()
         receiver = receiver.upper()
-        
+
     def whisper(self, function):
         @functools.wraps(function)
         def wrapper(*args):
