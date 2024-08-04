@@ -4,6 +4,8 @@ from abc import ABC, abstractmethod
 from collections import defaultdict
 from dataclasses import dataclass
 
+# TODO DETERMINE MORE EFFICIENT DESIGN PATTERN
+
 
 class CastleKilmereMember:
     """Creates a member of the Castle Kilmere School of Magic"""
