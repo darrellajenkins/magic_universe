@@ -1,10 +1,9 @@
 import datetime
 import functools
-
-from typing import NamedTuple
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
 from collections import defaultdict
+from dataclasses import dataclass
+
 
 class CastleKilmereMember:
     """Creates a member of the Castle Kilmere School of Magic"""
@@ -22,7 +21,7 @@ class CastleKilmereMember:
     def whisper(function):
         @functools.wraps(function)
         def wrapper(self, *args):
-            ''' Whispering decorator '''
+            """ Whispering decorator """
             original_output = function(self, *args)
             first_part, words = original_output.split(' says: ')
             words = words.replace('!', '.')
@@ -31,7 +30,7 @@ class CastleKilmereMember:
         return wrapper
 
     def says(self, words: str) -> str:
-        '''Allows a Castle Kilmere Member to talk'''
+        """Allows a Castle Kilmere Member to talk"""
         return f"{self.name} says: {words}"
 
     def add_trait(self, trait, value=True):
@@ -45,7 +44,7 @@ class CastleKilmereMember:
             print(f"{self.name} is {', '.join(true_traits)}.")
         if false_traits:
             print(f"{self.name} is not {', '.join(false_traits)}.")
-        if (not true_traits and not false_traits):
+        if not true_traits and not false_traits:
             print(f"{self.name} does not have traits yet.")
 
     def exhibits_trait(self, trait: str) -> bool:
@@ -64,6 +63,7 @@ class CastleKilmereMember:
     def __repr__(self) -> str:
         return (f"{self.__class__.__name__}(name='{self.name}', "
                 f"birthyear={self.birthyear}, sex='{self.sex}')")
+
 
 class Professor(CastleKilmereMember):
     """ Creates a Castle Kilmere professor """
@@ -89,7 +89,7 @@ class Professor(CastleKilmereMember):
         return cls('Gabriel Giddings', 1974, 'male', 'Broomstick Making', 'Department of Engineering')
 
     def __repr__(self) -> str:
-        return (f"{self.__class__.__name__}(name='{self.name}', birthyear={self.birthyear}, sex='{self.sex}', subject='{self.subject}', department='{self.department}')")
+        return f"{self.__class__.__name__}(name='{self.name}', birthyear={self.birthyear}, sex='{self.sex}', subject='{self.subject}', department='{self.department}')"
 
 
 class Ghost(CastleKilmereMember):
@@ -165,7 +165,7 @@ class Pupil(CastleKilmereMember):
 
     @classmethod
     def adrien(cls):
-        return cls('Adrien Fulford', 2008, 'male', 2020, ('Unnamed', 'owl') )
+        return cls('Adrien Fulford', 2008, 'male', 2020, ('Unnamed', 'owl'))
 
     @property
     def current_year(self) -> int:
@@ -302,7 +302,7 @@ class Charm(Spell):
                 "that is, its behaviour and capabilities")
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
     @classmethod
     def stuporus_ratiato(cls) -> 'Charm':
@@ -327,7 +327,7 @@ class Transfiguration(Spell):
         return cls('The Alteraro Canieo transfiguration', 'Alteraro Canieo', 'Turns an object into a can', 'Simple', 2)
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
 class Jinx(Spell):
     """Creates a jinx - a spell whose effects are irritating but amusing"""
@@ -345,7 +345,7 @@ class Jinx(Spell):
         return cls('The Inceptotis jinx', 'Inceptotis', 'Makes a person talk baby talk', 'Simple')
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
 class Hex(Spell):
     """Creates a hex - a spell that affects an object in a negative manner"""
@@ -363,7 +363,7 @@ class Hex(Spell):
         return cls('The Rectaro hex', 'Rectaro', 'Exchanges a persons arms and legs', 'Difficult')
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
 class Curse(Spell):
     """Creates a curse - a spell that affects an object in a stflynngly negative manner"""
@@ -381,7 +381,7 @@ class Curse(Spell):
                    'Tortures a person, makes person suffer deeply', 'Difficult')
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
 class CounterSpell(Spell):
     """Creates a counter-spell - a spell that inhibits the effect of another spell"""
@@ -390,7 +390,7 @@ class CounterSpell(Spell):
 
     @property
     def defining_feature(self) -> str:
-        return ("Inhibites the effects of another spell")
+        return "Inhibites the effects of another spell"
 
     @classmethod
     def mufindo_immolim(cls) -> 'CounterSpell':
@@ -398,7 +398,7 @@ class CounterSpell(Spell):
                    'Counteracts the immobilisation spell that prevents a person from moving')
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
 class HealingSpell(Spell):
     """Creates a healing-spell - a spell that improves the condition of a living object"""
@@ -415,11 +415,11 @@ class HealingSpell(Spell):
                    'Heals all kinds of wounds, even bad ones', 'Difficult', 5)
 
     def cast(self) -> str:
-        return(f"{self.incantation}!")
+        return f"{self.incantation}!"
 
 
 @dataclass(frozen=True)
-class DarkArmyMember():
+class DarkArmyMember:
     """ Creates a member of the Dark Army"""
     name: str
     birthyear: int
@@ -430,7 +430,7 @@ class DarkArmyMember():
         return master_odon
 
     def cast_spell(self, spell) -> str:
-        return(f"{self.name}: {spell.incantation}!")
+        return f"{self.name}: {spell.incantation}!"
 
 
 @dataclass
